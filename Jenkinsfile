@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    enviroment {
+
+    }
+
     stages {
 
         stage('Inicial') {
@@ -19,10 +23,10 @@ pipeline {
         stage('Build das imagens Docker') {
             steps {
                 script {
-                    dockerappa = docker.build("giovanacosta/app-a:${env.BUILD_ID}", '-f pipeline-jenkins/Lab-Jenkins/app-a')
-                    dockerappb = docker.build("giovanacosta/app-b:${env.BUILD_ID}", '-f pipeline-jenkins/Lab-Jenkins/app-b')
-                    dockerappc = docker.build("giovanacosta/app-c:${env.BUILD_ID}", '-f pipeline-jenkins/Lab-Jenkins/app-c')
-                    dockerappd = docker.build("giovanacosta/app-d:${env.BUILD_ID}", '-f pipeline-jenkins/Lab-Jenkins/app-d')
+                    dockerappa = docker.build("giovanacosta/app-a:${env.BUILD_ID}", '-f pipeline-jenkins/Lab-Jenkins/app-a .')
+                    dockerappb = docker.build("giovanacosta/app-b:${env.BUILD_ID}", '-f pipeline-jenkins/Lab-Jenkins/app-b .')
+                    dockerappc = docker.build("giovanacosta/app-c:${env.BUILD_ID}", '-f pipeline-jenkins/Lab-Jenkins/app-c .')
+                    dockerappd = docker.build("giovanacosta/app-d:${env.BUILD_ID}", '-f pipeline-jenkins/Lab-Jenkins/app-d .')
                 }
             }
         }
