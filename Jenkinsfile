@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    environment {
-        registry = "giovanacosta/app-a"
-        registryCredential = 'dockerhub'        
-    }
+    // environment {
+    //     registry = "giovanacosta/app-a"
+    //     registryCredential = 'dockerhub'        
+    // }
 
     stages {
 
