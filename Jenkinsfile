@@ -2,9 +2,6 @@ pipeline {
     agent any
 
     def appa
-    def appb
-    def appc
-    def appd
 
     stages {
 
@@ -31,9 +28,9 @@ pipeline {
             steps {
                 script {
                     appa = docker.build("giovanacosta/app-a:latest", '-f ./Lab-Jenkins/app-a .')
-                    appb = docker.build("giovanacosta/app-b:latest", '-f ./Lab-Jenkins/app-b .')
-                    appc = docker.build("giovanacosta/app-c", '-f ./Lab-Jenkins/app-c .')
-                    appd = docker.build("giovanacosta/app-d", '-f ./Lab-Jenkins/app-d .')
+                    dockerappb = docker.build("giovanacosta/app-b:latest", '-f ./Lab-Jenkins/app-b .')
+                    dockerappc = docker.build("giovanacosta/app-c", '-f ./Lab-Jenkins/app-c .')
+                    dockerappd = docker.build("giovanacosta/app-d", '-f ./Lab-Jenkins/app-d .')
                 }
             }
         }
