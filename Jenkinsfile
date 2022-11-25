@@ -18,7 +18,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "docker build -t giovanacosta/app-a:latest ."
+                sh "docker build -t giovanacosta/app-a:latest ./pipe-kubernetes/Lab-Jenkins/app-a"
             }
         }
 
