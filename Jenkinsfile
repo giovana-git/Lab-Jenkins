@@ -18,10 +18,11 @@ pipeline {
 
         stage('Build das imagens Docker') {
             steps {
-                dockerappa = docker.build("giovanacosta/app-a:latest"
-                dockerappb = docker.build("giovanacosta/app-b:latest"
-                dockerappc = docker.build("giovanacosta/app-c:latest"
-                dockerappd = docker.build("giovanacosta/app-d:latest"
+                dockerappa = docker.build("giovanacosta/app-a:${env.BUILD_ID}", 
+                    '-f pipeline-jenkins/Lab-Jenkins/app-a')
+                dockerappb = docker.build("giovanacosta/app-b:latest")
+                dockerappc = docker.build("giovanacosta/app-c:latest")
+                dockerappd = docker.build("giovanacosta/app-d:latest")
                 
             }
         }
