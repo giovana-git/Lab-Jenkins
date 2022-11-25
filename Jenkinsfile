@@ -25,9 +25,9 @@ pipeline {
             steps {
                 script {
                     dockerappa = docker.build giovanacosta/app-a":latest"
-                    dockerappb = docker.build giovanacosta/app-b":latest"
-                    dockerappc = docker.build giovanacosta/app-c":latest"
-                    dockerappd = docker.build giovanacosta/app-d":latest"
+                    // dockerappb = docker.build giovanacosta/app-b":latest"
+                    // dockerappc = docker.build giovanacosta/app-c":latest"
+                    // dockerappd = docker.build giovanacosta/app-d":latest"
                 }
             }
         }
