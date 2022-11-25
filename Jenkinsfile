@@ -24,10 +24,10 @@ pipeline {
         stage('Build das imagens Docker') {
             steps {
                 script {
-                    dockerappa = docker.build giovanacosta/app-a:latest
-                    dockerappb = docker.build giovanacosta/app-b:latest
-                    dockerappc = docker.build giovanacosta/app-c:latest
-                    dockerappd = docker.build giovanacosta/app-d:latest
+                    dockerappa = docker.build giovanacosta/app-a":latest"
+                    dockerappb = docker.build giovanacosta/app-b":latest"
+                    dockerappc = docker.build giovanacosta/app-c":latest"
+                    dockerappd = docker.build giovanacosta/app-d":latest"
                 }
             }
         }
