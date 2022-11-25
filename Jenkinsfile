@@ -2,21 +2,20 @@ pipeline {
     agent any
 
     stages {
+
         stage('Inicial') {
             steps {
                 echo 'Iniciando a pipeline'
             }
         }
 
-    stages {
+
         stage('Origem do GitHub') {
             steps {
                 git url: 'https://github.com/giovana-git/Lab-Jenkins.git', branch: 'main'
             }
         }
-    }
 
-    stages {
         stage('Build das imagens Docker') {
             steps {
                 dockerappa = docker.build("giovanacosta/app-a:latest"
@@ -26,9 +25,7 @@ pipeline {
                 
             }
         }
-    }
 
-    stages {
         stage('Push imagem para o DockerHub') {
             steps {
                 docker.withRegistry('https://registry.hub.docker.com/', 'dockerhub')
@@ -39,7 +36,6 @@ pipeline {
 
             }
         }
-    }
 
         stage('Deploying App to Kubernetes') {
             steps {
@@ -48,6 +44,4 @@ pipeline {
         }
       }
     }
-
     }
-}
