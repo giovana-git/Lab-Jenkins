@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        registry = "giovanacosta/app-a"
+        registryCredential = '<dockerhub-credential-name>'        
+    }
+
     stages {
 
         stage('Inicial') {
@@ -16,11 +21,22 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build das imagens Docker') {
             steps {
-                sh "docker build -t giovanacosta/app-a:latest Lab-Jenkins/app-a"
+                script {
+                    dockerappa = docker.build giovanacosta/app-a:latest
+                    dockerappb = docker.build giovanacosta/app-b:latest
+                    dockerappc = docker.build giovanacosta/app-c:latest
+                    dockerappd = docker.build giovanacosta/app-d:latest
+                }
             }
         }
+
+        // stage('Build') {
+        //     steps {
+        //         sh "docker build -t giovanacosta/app-a:latest Lab-Jenkins/app-a"
+        //     }
+        // }
 
         // stage('Build das imagens Docker') {
         //     steps {
