@@ -27,8 +27,8 @@ pipeline {
                 script {
                     dockerappa = docker.build("giovanacosta/app-a:latest", '-f ./Lab-Jenkins/app-a .')
                     dockerappb = docker.build("giovanacosta/app-b:latest", '-f ./Lab-Jenkins/app-b .')
-                    dockerappc = docker.build("giovanacosta/app-c", '-f ./Lab-Jenkins/app-c .')
-                    dockerappd = docker.build("giovanacosta/app-d", '-f ./Lab-Jenkins/app-d .')
+                    dockerappc = docker.build("giovanacosta/app-c:latest", '-f ./Lab-Jenkins/app-c .')
+                    dockerappd = docker.build("giovanacosta/app-d:latest", '-f ./Lab-Jenkins/app-d .')
                 }
             }
         }
@@ -36,11 +36,11 @@ pipeline {
         stage('Push imagem para o DockerHub') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com/', 'dockerhub') {
-                        dockerappa.push("${env.BUILD_ID}")
-                        dockerappb.push("${env.BUILD_ID}")
-                        dockerappc.push("${env.BUILD_ID}")
-                        dockerappd.push("${env.BUILD_ID}")
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        dockerappa.push('latest')
+                        dockerappb.push('latest')
+                        dockerappc.push('latest')
+                        dockerappd.push('latest')
                     }
                 }
             }
