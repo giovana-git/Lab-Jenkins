@@ -34,9 +34,14 @@ pipeline {
         }
 
         stage('Push imagem para o DockerHub') {
+
+            enviroment {
+                registryCredential = 'dockerhub'
+            }
+
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                    docker.withRegistry('https://registry.hub.docker.com', registryCredential ) {
                         dockerappa.push('latest')
                         dockerappb.push('latest')
                         dockerappc.push('latest')
