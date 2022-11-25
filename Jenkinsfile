@@ -16,16 +16,22 @@ pipeline {
             }
         }
 
-        stage('Build das imagens Docker') {
+        stage('Build') {
             steps {
-                script {
-                    dockerappa = docker.build("giovanacosta/app-a:latest", '-f ./Lab-Jenkins/app-a .')
-                    dockerappb = docker.build("giovanacosta/app-b:latest", '-f ./Lab-Jenkins/app-b .')
-                    dockerappc = docker.build("giovanacosta/app-c", '-f ./Lab-Jenkins/app-c .')
-                    dockerappd = docker.build("giovanacosta/app-d", '-f ./Lab-Jenkins/app-d .')
-                }
+                sh "docker build -t giovanacosta/app-a:latest"
             }
         }
+
+        // stage('Build das imagens Docker') {
+        //     steps {
+        //         script {
+        //             dockerappa = docker.build("giovanacosta/app-a:latest", '-f ./Lab-Jenkins/app-a .')
+        //             dockerappb = docker.build("giovanacosta/app-b:latest", '-f ./Lab-Jenkins/app-b .')
+        //             dockerappc = docker.build("giovanacosta/app-c", '-f ./Lab-Jenkins/app-c .')
+        //             dockerappd = docker.build("giovanacosta/app-d", '-f ./Lab-Jenkins/app-d .')
+        //         }
+        //     }
+        // }
 
         stage('Push imagem para o DockerHub') {
             steps {
