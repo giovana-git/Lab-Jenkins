@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         registry = "giovanacosta/app-a"
-        registryCredential = '<dockerhub-credential-name>'        
+        registryCredential = 'dockerhub'        
     }
 
     stages {
