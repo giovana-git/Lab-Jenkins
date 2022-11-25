@@ -23,7 +23,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "docker build -t giovanacosta/app-a:latest ."
+                sh "docker build -t giovanacosta/app-a:latest pipeline-jenkins/Lab-Jenkins/app-a"
             }
         }
 
