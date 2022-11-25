@@ -23,7 +23,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "docker build -t giovanacosta/app-a:latest /var/lib/jenkins/workspace/pipeline-jenkins/Lab-Jenkins/app-a"
+                sh "cd /var/lib/jenkins/Lab-Jenkins/app-a"
+                sh "docker build -t giovanacosta/app-a:latest ."
             }
         }
 
