@@ -34,11 +34,6 @@ pipeline {
         }
 
         stage('Push imagem para o DockerHub') {
-
-            enviroment {
-                registryCredential = 'dockerhub'
-            }
-
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
