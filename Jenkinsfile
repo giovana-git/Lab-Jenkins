@@ -21,22 +21,11 @@ pipeline {
             }
         }
 
-        stage('Build das imagens Docker') {
+        stage('Build') {
             steps {
-                script {
-                    dockerappa = docker.build giovanacosta/app-a":latest"
-                    // dockerappb = docker.build giovanacosta/app-b":latest"
-                    // dockerappc = docker.build giovanacosta/app-c":latest"
-                    // dockerappd = docker.build giovanacosta/app-d":latest"
-                }
+                sh "docker build -t giovanacosta/app-a:latest ."
             }
         }
-
-        // stage('Build') {
-        //     steps {
-        //         sh "docker build -t giovanacosta/app-a:latest Lab-Jenkins/app-a"
-        //     }
-        // }
 
         // stage('Build das imagens Docker') {
         //     steps {
