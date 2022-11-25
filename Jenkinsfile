@@ -20,9 +20,12 @@ pipeline {
             steps {
                 dockerappa = docker.build("giovanacosta/app-a:${env.BUILD_ID}", 
                     '-f pipeline-jenkins/Lab-Jenkins/app-a')
-                dockerappb = docker.build("giovanacosta/app-b:latest")
-                dockerappc = docker.build("giovanacosta/app-c:latest")
-                dockerappd = docker.build("giovanacosta/app-d:latest")
+                dockerappb = docker.build("giovanacosta/app-b:${env.BUILD_ID}"
+                    '-f pipeline-jenkins/Lab-Jenkins/app-b')
+                dockerappc = docker.build("giovanacosta/app-c:${env.BUILD_ID}"
+                    '-f pipeline-jenkins/Lab-Jenkins/app-c')
+                dockerappd = docker.build("giovanacosta/app-d:${env.BUILD_ID}"
+                    '-f pipeline-jenkins/Lab-Jenkins/app-d')
                 
             }
         }
@@ -41,8 +44,8 @@ pipeline {
         stage('Deploying App to Kubernetes') {
             steps {
                 script {
-                 kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")
+                    kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes"                    
+                }
+            }
         }
-      }
-    }
     }
