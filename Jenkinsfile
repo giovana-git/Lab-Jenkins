@@ -14,30 +14,28 @@ pipeline {
             }
         }
 
-
-        stage('Origem do GitHub') {
-            steps {
-                git url: 'https://github.com/giovana-git/Lab-Jenkins.git', branch: 'main'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh "cd /var/lib/jenkins/Lab-Jenkins/app-a"
-                sh "docker build -t giovanacosta/app-a:latest ."
-            }
-        }
-
-        // stage('Build das imagens Docker') {
+        // stage('Origem do GitHub') {
         //     steps {
-        //         script {
-        //             dockerappa = docker.build("giovanacosta/app-a:latest", '-f ./Lab-Jenkins/app-a .')
-        //             dockerappb = docker.build("giovanacosta/app-b:latest", '-f ./Lab-Jenkins/app-b .')
-        //             dockerappc = docker.build("giovanacosta/app-c:latest", '-f ./Lab-Jenkins/app-c .')
-        //             dockerappd = docker.build("giovanacosta/app-d:latest", '-f ./Lab-Jenkins/app-d .')
-        //         }
+        //         git url: 'https://github.com/giovana-git/Lab-Jenkins.git', branch: 'main'
         //     }
         // }
+
+        // stage('Build') {
+        //     steps {
+        //         sh "docker build -t giovanacosta/app-a:latest ."
+        //     }
+        // }
+
+        stage('Build das imagens Docker') {
+            steps {
+                script {
+                    dockerappa = docker.build("giovanacosta/app-a", '-f ./Lab-Jenkins/app-a/Dockerfile ./Lab-Jenkins/app-a')
+                    dockerappb = docker.build("giovanacosta/app-b", '-f ./Lab-Jenkins/app-b/Dockerfile ./Lab-Jenkins/app-a')
+                    dockerappc = docker.build("giovanacosta/app-c", '-f ./Lab-Jenkins/app-c/Dockerfile ./Lab-Jenkins/app-a')
+                    dockerappd = docker.build("giovanacosta/app-d", '-f ./Lab-Jenkins/app-d/Dockerfile ./Lab-Jenkins/app-a')
+                }
+            }
+        }
 
         // stage('Push imagem para o DockerHub') {
         //     steps {
