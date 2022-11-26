@@ -14,11 +14,11 @@ pipeline {
             }
         }
 
-        stage('Origem do GitHub') {
-            steps {
-                git url: 'https://github.com/giovana-git/Lab-Jenkins.git', branch: 'main'
-            }
-        }
+        // stage('Origem do GitHub') {
+        //     steps {
+        //         git url: 'https://github.com/giovana-git/Lab-Jenkins.git', branch: 'main'
+        //     }
+        // }
 
         // stage('Build') {
         //     steps {
@@ -29,7 +29,7 @@ pipeline {
         stage('Build das imagens Docker') {
             steps {
                 script {
-                    dockerappa = docker.build("giovanacosta/app-a", '-f ./teste-jenkins/app-a/Dockefile')
+                    dockerappa = docker.build("giovanacosta/app-a", '-f ./app-a/Dockerfile ./app-a')
                     // dockerappb = docker.build("giovanacosta/app-b", '-f ./Lab-Jenkins/app-b/Dockerfile ./Lab-Jenkins/app-a')
                     // dockerappc = docker.build("giovanacosta/app-c", '-f ./Lab-Jenkins/app-c/Dockerfile ./Lab-Jenkins/app-a')
                     // dockerappd = docker.build("giovanacosta/app-d", '-f ./Lab-Jenkins/app-d/Dockerfile ./Lab-Jenkins/app-a')
